@@ -1,0 +1,36 @@
+@reference 'tailwindcss';
+
+:host {
+  display: block;
+  height: 100%;
+  position: relative;
+
+  emr-sidebar {
+    background-color: var(--color-surface-container-low);
+    border-radius: 0 theme(--radius-2xl) theme(--radius-2xl) 0;
+    box-shadow: theme(--shadow-sm);
+  }
+
+  emr-sidebar-header {
+    --emr-sidebar-header-padding: 0 --spacing(7);
+    --emr-sidebar-header-compact-padding: 0 --spacing(7);
+    --emr-logo-text-hover-color: var(--color-primary) !important;
+  }
+
+  emr-sidebar-nav {
+    --emr-sidebar-nav-item-hover-bg: var(--color-neutral-300);
+    --emr-sidebar-nav-group-toggle-active-bg: var(--color-neutral-300);
+    --emr-sidebar-nav-nested-item-hover-bg: var(--color-neutral-300);
+    --emr-sidebar-nav-group-tree-lines-color: var(--color-neutral-300);
+  }
+
+  emr-sidebar-body {
+    --emr-sidebar-body-padding: 0 --spacing(5);
+    --emr-sidebar-body-compact-padding: 0 --spacing(3);
+  }
+
+  emr-sidebar-footer {
+    --emr-sidebar-footer-padding: --spacing(6) --spacing(7);
+    --emr-sidebar-footer-compact-padding: --spacing(3) --spacing(7);
+  }
+}

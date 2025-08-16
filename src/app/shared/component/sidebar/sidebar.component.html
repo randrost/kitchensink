@@ -1,0 +1,59 @@
+<emr-sidebar [style.width]="isMobile() ? '100vw' : 'auto'" [style.position]="isMobile() ? 'absolute' : 'relative'">
+  <emr-sidebar-header class="h-20">
+    <a routerLink="/" emr-logo>Kitchen Sink</a>
+    @if (isMobile()) {
+      <button mat-icon-button (click)="toggleSidebar()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    }
+  </emr-sidebar-header>
+  <emr-sidebar-body>
+    <emr-sidebar-nav activeKey="home">
+      @for (navItem of navItems; track navItem) {
+        @switch (navItem.type) {
+          @case ('group') {
+            <emr-sidebar-nav-group>
+              <emr-sidebar-nav-group-toggle>
+                <ng-container emrSidebarNavItemIcon>
+                  @if (navItem.icon) {
+                    <mat-icon>{{ navItem.icon }}</mat-icon>
+                  }
+                </ng-container>
+                {{ navItem.name }}
+                <mat-icon emrSidebarNavGroupToggleIcon>arrow_drop_down</mat-icon>
+              </emr-sidebar-nav-group-toggle>
+              <emr-sidebar-nav-group-menu>
+                @for (childNavItem of navItem.children; track childNavItem) {
+                  <emr-sidebar-nav-item [key]="childNavItem.key" [routerLink]="childNavItem.link">
+                    <ng-container emrSidebarNavItemIcon>
+                      @if (childNavItem.icon) {
+                        <mat-icon>{{ childNavItem.icon }}</mat-icon>
+                      }
+                    </ng-container>
+                    {{ childNavItem.name }}
+                  </emr-sidebar-nav-item>
+                }
+              </emr-sidebar-nav-group-menu>
+            </emr-sidebar-nav-group>
+          }
+          @case ('heading') {
+            <emr-sidebar-nav-heading>{{ navItem.name }}</emr-sidebar-nav-heading>
+          }
+          @default {
+            <emr-sidebar-nav-item [key]="navItem.key" [routerLink]="navItem.link">
+              <ng-container emrSidebarNavItemIcon>
+                @if (navItem.icon) {
+                  <mat-icon>{{ navItem.icon }}</mat-icon>
+                }
+              </ng-container>
+              {{ navItem.name }}
+            </emr-sidebar-nav-item>
+          }
+        }
+      }
+    </emr-sidebar-nav>
+  </emr-sidebar-body>
+  <emr-sidebar-footer class="h-20 px-7 text-sm border-t border-t-default">
+    Copyright &copy; 2025
+  </emr-sidebar-footer>
+</emr-sidebar>
