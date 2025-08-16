@@ -1,2 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
 @use '@elementar-ui/components/styles/themes/cyan-orange';
+
+html {
+  /* Global markdown typography */
+  markdown, .markdown {
+    h1 { @apply text-4xl font-bold mt-6 mb-4; }
+    h2 { @apply text-3xl font-semibold mt-6 mb-3; }
+    h3 { @apply text-2xl font-semibold mt-5 mb-2; }
+    p  { @apply my-4 leading-7; }
+    ul { @apply list-disc pl-6 my-4; }
+    ol { @apply list-decimal pl-6 my-4; }
+    li { @apply my-1; }
+    blockquote { @apply border-l-4 pl-4 italic my-4; }
+    code { @apply rounded px-1 py-0.5; }
+    pre code { @apply block p-4 overflow-x-auto rounded; }
+    a { @apply underline; }
+  }
+
+}
