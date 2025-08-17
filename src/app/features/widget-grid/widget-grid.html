@@ -1,0 +1,18 @@
+<gridster [options]="options">
+  @for (item of dashboard; track item) {
+    <gridster-item [item]="item">
+      <div class="button-holder">
+        @if (!item['hasContent']) {
+          <label>{{ item['label'] }}</label>
+        }
+        @if (!item['hasContent']) {
+          <button
+            mat-mini-fab
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        }
+      </div>
+    </gridster-item>
+  }
+</gridster>
