@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:kitchensink": "node dist/kitchensink/server/server.mjs"
+    "serve:ssr": "node dist/kitchensink/server/server.mjs"
   },
   "prettier": {
     "printWidth": 100,
