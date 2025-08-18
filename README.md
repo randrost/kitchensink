@@ -1,5 +1,41 @@
 # Kitchensink
 
+Kitchensink is a demo application showcasing various Angular features and best practices. It serves as a playground for experimenting with modern Angular concepts and is not intended for production use.
+
+## Features
+
+- **Markdown rendering** with [ngx-markdown](https://github.com/jfcere/ngx-markdown)
+- **Grid widget system** using [angular-gridster2](https://github.com/tiberiuzuld/angular-gridster2)
+- **Breakpoint service** for responsive design
+- **Responsive default layout** powered by [elementar-ui](https://github.com/elementarlabs/elementar-ui)
+- Error pages (404, 500, access denied)
+- Extensible routing structure
+
+## Technologies Used
+
+- [Angular](https://angular.dev/) 20+
+- [ngx-markdown](https://github.com/jfcere/ngx-markdown)
+- [angular-gridster2](https://github.com/tiberiuzuld/angular-gridster2)
+- [elementar-ui](https://github.com/elementarlabs/elementar-ui)
+- Docker & Jenkins for CI/CD
+
+## Project Structure (excerpt)
+
+- `src/app/features/` – Main features like error pages, main, widget grid
+- `src/app/shared/` – Reusable components, directives, pipes
+- `src/app/core/` – Services, guards, interceptors
+- `public/assets/` – Images, icons, sound effects
+
+## Docker & CI/CD
+
+The project includes a sample Dockerfile and Jenkinsfile for automated builds and deployments.
+
+## Author
+
+Rostyslav Tulika
+
+---
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.6.
 
 ## Development server
