@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-//         REGISTRY = "your.private.registry.com"
-//         IMAGE_NAME = "your-app-name"
-//         DOCKER_CREDENTIALS_ID = "docker-registry-credentials"
+        REGISTRY = "registry.licendra.com"
+        IMAGE_NAME = "kitchensink"
+        DOCKER_CREDENTIALS_ID = "docker-registry-credentials"
     }
 
     triggers {
@@ -12,31 +12,25 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'master',
-                    url: 'git@github.com/randrost/kitchensink.git',
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 script {
+                    // Jenkins automatically checked out the repo
                     dockerImage = docker.build("${REGISTRY}/${IMAGE_NAME}:${env.BUILD_NUMBER}")
                 }
             }
         }
 
-//         stage('Push to Registry') {
-//             steps {
-//                 script {
-//                     docker.withRegistry("https://${REGISTRY}", "${DOCKER_CREDENTIALS_ID}") {
-//                         dockerImage.push()
-//                         dockerImage.push("latest") // keep a 'latest' tag
-//                     }
-//                 }
-//             }
-//         }
+        stage('Push to Registry') {
+            steps {
+                script {
+                    docker.withRegistry("https://${REGISTRY}", "${DOCKER_CREDENTIALS_ID}") {
+                        dockerImage.push()
+                        dockerImage.push("latest") // optional: tag latest
+                    }
+                }
+            }
+        }
     }
 
     post {
