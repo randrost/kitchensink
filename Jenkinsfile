@@ -24,7 +24,7 @@ pipeline {
         stage('Push to Registry') {
             steps {
                 script {
-                    docker.withRegistry("https://${REGISTRY}", "${DOCKER_CREDENTIALS_ID}") {
+                    docker.withRegistry("${REGISTRY}", "${DOCKER_CREDENTIALS_ID}") {
                         dockerImage.push()
                         dockerImage.push("latest") // optional: tag latest
                     }
