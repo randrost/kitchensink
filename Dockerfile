@@ -22,7 +22,7 @@ FROM node:alpine AS serve
 WORKDIR /usr/src/app
 # Copy the built application from the build stage
 COPY --from=build /usr/src/app/dist /usr/src/app/dist
-COPY /usr/src/app/dist/kitchensink/3rdpartylicenses.txt /usr/src/app/dist/kitchensink/browser/3rdpartylicenses.txt
+COPY --from=build /usr/src/app/dist/kitchensink/3rdpartylicenses.txt /usr/src/app/dist/kitchensink/browser/3rdpartylicenses.txt
 # Copy the package.json and package-lock.json
 COPY package.json package-lock.json ./
 # Install only production dependencies
