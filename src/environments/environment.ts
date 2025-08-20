@@ -1,5 +1,5 @@
 export const environment = {
-  siteUrl: 'http://localhost:4200',
+  siteUrl: 'https://kitchensink.licendra.com',
   googleAnalyticsId: '',
   pageTitle: 'Kitchen Sink',
   pageMeta: {
