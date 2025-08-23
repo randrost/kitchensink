@@ -6,8 +6,8 @@ import {
   LayoutHeaderComponent,
   LayoutSidebarComponent
 } from '@elementar-ui/components/layout';
-import { HeaderComponent } from '@shared/component/header/header.component';
-import { SidebarComponent } from '@shared/component/sidebar/sidebar.component';
+import { HeaderComponent } from '@shared/components/header/header.component';
+import { SidebarComponent } from '@shared/components/sidebar/sidebar.component';
 
 @Component({
   imports: [
