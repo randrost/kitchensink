@@ -7,7 +7,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    loadComponent: () => import('@shared/component/common/common.component').then(c => c.CommonComponent),
+    loadComponent: () => import('@shared/components/common/common.component').then(c => c.CommonComponent),
     children: [
       {
         path: '',
