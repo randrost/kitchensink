@@ -1,4 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {
+  Component, inject,
+  OnInit, signal,
+  WritableSignal
+} from '@angular/core';
 import {
   CompactType, DisplayGrid,
   GridsterComponent,
@@ -8,7 +12,13 @@ import {
   GridType
 } from 'angular-gridster2';
 import {MatIconModule} from '@angular/material/icon';
-import {MatIconButton, MatMiniFabButton} from '@angular/material/button';
+import {MatButton, MatIconButton} from '@angular/material/button';
+import * as uuid from 'uuid';
+import {MatRippleModule} from '@angular/material/core';
+import {BaseWidget} from '@shared/components/base-widget/base-widget';
+import {PanelBodyComponent, PanelComponent, PanelHeaderComponent} from '@elementar-ui/components/panel';
+import {SidePanelComponent, SidePanelTabComponent} from '@elementar-ui/components/side-panel';
+import {Snackbar} from '@core/services/snackbar';
 
 @Component({
   selector: 'app-widget-grid',
@@ -16,32 +26,45 @@ import {MatIconButton, MatMiniFabButton} from '@angular/material/button';
     GridsterComponent,
     GridsterItemComponent,
     MatIconModule,
+    MatButton,
+    MatRippleModule,
+    BaseWidget,
+    PanelComponent,
+    PanelBodyComponent,
+    PanelHeaderComponent,
+    SidePanelComponent,
+    SidePanelTabComponent,
     MatIconButton,
-    MatMiniFabButton
   ],
   templateUrl: './widget-grid.html',
-  styleUrl: './widget-grid.scss'
+  styleUrl: './widget-grid.scss',
 })
 export class WidgetGrid implements OnInit {
+  private _snackbarService = inject(Snackbar);
+
   options: GridsterConfig = {
     gridType: GridType.Fit,
     compactType: CompactType.None,
-    margin: 10,
+
+    margin: 6,
+
     outerMargin: true,
-    outerMarginTop: null,
-    outerMarginRight: null,
-    outerMarginBottom: null,
-    outerMarginLeft: null,
+    outerMarginTop: 6,
+    outerMarginRight: 6,
+    outerMarginBottom: 6,
+    outerMarginLeft: 6,
+
     useTransformPositioning: true,
     mobileBreakpoint: 640,
     useBodyForBreakpoint: false,
+
     minCols: 1,
-    maxCols: 100,
+    maxCols: undefined,
     minRows: 1,
-    maxRows: 100,
-    maxItemCols: 100,
+    maxRows: undefined,
+    maxItemCols: undefined,
     minItemCols: 1,
-    maxItemRows: 100,
+    maxItemRows: undefined,
     minItemRows: 1,
     maxItemArea: 2500,
     minItemArea: 1,
@@ -71,80 +94,33 @@ export class WidgetGrid implements OnInit {
     pushItems: true,
     disablePushOnDrag: false,
     disablePushOnResize: false,
-    pushDirections: { north: true, east: true, south: true, west: true },
+    pushDirections: {north: true, east: true, south: true, west: true},
     pushResizeItems: false,
-    displayGrid: DisplayGrid.Always,
+    displayGrid: DisplayGrid.None,
     disableWindowResize: false,
     disableWarnings: false,
-    scrollToNewItems: false
+    scrollToNewItems: false,
   };
-  dashboard: Array<GridsterItem> = [
-    { cols: 2, rows: 1, y: 0, x: 0 },
-    { cols: 2, rows: 2, y: 0, x: 2, hasContent: true },
-    { cols: 1, rows: 1, y: 0, x: 4 },
-    { cols: 1, rows: 1, y: 2, x: 5 },
-    { cols: 1, rows: 1, y: 1, x: 0 },
-    { cols: 1, rows: 1, y: 1, x: 0 },
-    {
-      cols: 2,
-      rows: 2,
-      y: 3,
-      x: 5,
-      minItemRows: 2,
-      minItemCols: 2,
-      label: 'Min rows & cols = 2'
-    },
-    {
-      cols: 2,
-      rows: 2,
-      y: 2,
-      x: 0,
-      maxItemRows: 2,
-      maxItemCols: 2,
-      label: 'Max rows & cols = 2'
-    },
-    {
-      cols: 2,
-      rows: 1,
-      y: 2,
-      x: 2,
-      dragEnabled: true,
-      resizeEnabled: true,
-      label: 'Drag&Resize Enabled'
-    },
-    {
-      cols: 1,
-      rows: 1,
-      y: 2,
-      x: 4,
-      dragEnabled: false,
-      resizeEnabled: false,
-      label: 'Drag&Resize Disabled'
-    },
-    { cols: 1, rows: 1, y: 2, x: 6 }
-  ];
+  dashboard: WritableSignal<Array<GridsterItem>> = signal([]);
 
-  itemChange(item: any, itemComponent: any) {
-    console.info('itemChanged', item, itemComponent);
+  ngOnInit(): void {
+    //load initial data
   }
 
-  itemResize(item: any, itemComponent: any) {
-    console.info('itemResized', item, itemComponent);
+  addItem(): void {
+    this.dashboard.update(dashboard => [...dashboard, {
+      cols: 1, rows: 1, y: 0, x: 0, id: uuid.v7(),
+      title: 'New Widget',
+    }]);
   }
 
-  ngOnInit() {
+  removeItem(item: GridsterItem): void {
+    this.dashboard.update(dashboard => dashboard.filter(d => d !== item));
+    this._snackbarService.openSnackBar('Widget removed');
   }
 
-  changedOptions() {
-    // this.options.api.optionsChanged();
-  }
-
-  // removeItem(item) {
-    // this.dashboard.splice(this.dashboard.indexOf(item), 1);
-  // }
-
-  addItem() {
-
-    // this.dashboard.push({});
+  lol(): void {
+    if (this.options.api?.optionsChanged)
+    this.options.api.optionsChanged()
   }
 }

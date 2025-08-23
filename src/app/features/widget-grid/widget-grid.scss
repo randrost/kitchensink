@@ -4,6 +4,36 @@
 
   border-radius: 16px;
   border: 1px solid var(--color-neutral-400);
-  padding: 16px;
-  margin: 20px;
+  margin: 0 16px 16px 16px;
+
+  overflow: hidden;
+}
+
+gridster {
+  width: auto !important;
+  background-color: transparent;
+}
+
+::ng-deep gridster gridster-item {
+  background-color: var(--color-surface-container-low);
+  padding: 8px;
+  border-radius: 10px;
+  //border: 1px solid var(--color-default);
+}
+
+::ng-deep gridster gridster-preview {
+  border-radius: 10px;
+  border: 1px solid var(--color-default);
+}
+
+.overlay {
+  mat-icon {
+    font-size: 48px;
+    width: auto;
+    height: auto;
+  }
+}
+
+emr-side-panel {
+  height: auto !important;
 }

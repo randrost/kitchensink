@@ -1,18 +1,57 @@
-<gridster [options]="options">
-  @for (item of dashboard; track item) {
-    <gridster-item [item]="item">
-      <div class="button-holder">
-        @if (!item['hasContent']) {
-          <label>{{ item['label'] }}</label>
-        }
-        @if (!item['hasContent']) {
-          <button
-            mat-mini-fab
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-        }
+<div class="flex h-full w-full overflow-hidden">
+  <emr-panel class="grow border-r border-default"
+             [class.me-4]="sidePanel.isOpen()">
+    <emr-panel-header class="h-14 border-b border-b-default flex justify-between">
+      <div class="h-full flex items-center px-6">
+        <h1 class="font-medium text-lg">Home</h1>
+      </div>
+
+      <div class="h-full flex items-center px-4 gap-4">
+        <button mat-flat-button (click)="addItem()">
+          <mat-icon>add</mat-icon>
+          Add Widget
+        </button>
+        <button mat-icon-button>
+          <mat-icon>undo</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>redo</mat-icon>
+        </button>
       </div>
     </gridster-item>
   }
 </gridster>
+    </emr-panel-header>
+    <emr-panel-body>
+      <gridster [options]="options">
+        @if (dashboard().length > 0) {
+          @for (item of dashboard(); track item['id']) {
+            <gridster-item [item]="item">
+            </gridster-item>
+          }
+        } @else {
+          <!--    overlay-->
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-4 p-4">
+            <div class="text-center">
+              <mat-icon class="text-neutral-400 dark:text-neutral-500">dashboard</mat-icon>
+              <h2 class="text-2xl font-semibold">No widgets added yet</h2>
+              <p class="text-neutral-500 dark:text-neutral-400">Start by adding a new widget to your dashboard</p>
+            </div>
+          </div>
+        }
+      </gridster>
+    </emr-panel-body>
+  </emr-panel>
+  <emr-side-panel #sidePanel class="my-2" (opened)="lol()" (closed)="lol()">
+    @if (true) {
+      <emr-side-panel-tab tabId="edit" label="Edit Widget" icon="build">
+
+        <!--    if nothing selected, than centred select widget first    -->
+        <div class="p-5">
+          <h2 class="text-2xl font-semibold mb-2">No widget selected</h2>
+          <p class="text-neutral-500 dark:text-neutral-400">Please select a widget from the dashboard to edit its settings.</p>
+        </div>
+      </emr-side-panel-tab>
+    }
+  </emr-side-panel>
+</div>
