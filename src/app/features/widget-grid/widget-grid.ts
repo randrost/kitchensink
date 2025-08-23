@@ -15,7 +15,6 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButton, MatIconButton} from '@angular/material/button';
 import * as uuid from 'uuid';
 import {MatRippleModule} from '@angular/material/core';
-import {BaseWidget} from '@shared/components/base-widget/base-widget';
 import {PanelBodyComponent, PanelComponent, PanelHeaderComponent} from '@elementar-ui/components/panel';
 import {SidePanelComponent, SidePanelTabComponent} from '@elementar-ui/components/side-panel';
 import {Snackbar} from '@core/services/snackbar';
@@ -28,7 +27,6 @@ import {Snackbar} from '@core/services/snackbar';
     MatIconModule,
     MatButton,
     MatRippleModule,
-    BaseWidget,
     PanelComponent,
     PanelBodyComponent,
     PanelHeaderComponent,
