@@ -1,22 +1,26 @@
-<div class="h-20 w-full px-10 bg-background">
-  <div class="h-full flex items-center border-b border-b-default dark:border-b-neutral-600 gap-7">
-    <div class="flex items-center gap-3 -ms-3">
+<div class="h-16 w-full px-4 bg-background">
+  <div class="h-full flex items-center gap-7">
+    <div class="flex items-center gap-3">
       <button mat-icon-button (click)="toggleSidebar()">
         <mat-icon>menu</mat-icon>
       </button>
-<!--      <emr-assistant-search/>-->
+      <!--      <emr-assistant-search/>-->
     </div>
     <div class="ms-auto flex items-center gap-3">
+      @if (headerPortal(); as portal) {
+        <ng-template [cdkPortalOutlet]="portal"></ng-template>
+      }
+
       <a mat-stroked-button href="https://github.com/randrost/kitchensink" target="_blank">Github</a>
 
-<!--      <button mat-icon-button [matMenuTriggerFor]="appsMenu" matTooltip="Applications">-->
-<!--        <mat-icon>apps</mat-icon>-->
-<!--      </button>-->
+      <!--      <button mat-icon-button [matMenuTriggerFor]="appsMenu" matTooltip="Applications">-->
+      <!--        <mat-icon>apps</mat-icon>-->
+      <!--      </button>-->
 
-<!--      <button mat-icon-button matTooltip="Notifications"-->
-<!--              [emrPopoverTriggerFor]="notificationsPopover" position="below-end">-->
-<!--        <mat-icon matBadge="3">notifications</mat-icon>-->
-<!--      </button>-->
+      <!--      <button mat-icon-button matTooltip="Notifications"-->
+      <!--              [emrPopoverTriggerFor]="notificationsPopover" position="below-end">-->
+      <!--        <mat-icon matBadge="3">notifications</mat-icon>-->
+      <!--      </button>-->
 
       <emr-color-scheme-switcher matTooltip="Color Theme" emrSoundEffect>
         <mat-icon *emrColorSchemeLight>light_mode</mat-icon>
@@ -24,9 +28,9 @@
       </emr-color-scheme-switcher>
 
       <!--      <emr-dicebear key="PS"-->
-<!--                    [clickable]="true"-->
-<!--                    [matMenuTriggerFor]="accountMenu"-->
-<!--                    matTooltip="Account" class="size-10"/>-->
+      <!--                    [clickable]="true"-->
+      <!--                    [matMenuTriggerFor]="accountMenu"-->
+      <!--                    matTooltip="Account" class="size-10"/>-->
     </div>
   </div>
 </div>
@@ -35,7 +39,8 @@
   <div class="w-80">
     <a routerLink="/" mat-menu-item>
       <div class="flex items-center gap-3 my-3">
-        <div class="size-14 border border-neutral-400 dark:border-inverse rounded-lg flex-none flex items-center justify-center">
+        <div
+          class="size-14 border border-neutral-400 dark:border-inverse rounded-lg flex-none flex items-center justify-center">
           <img src="assets/applications/file-storage.svg" alt="File Storage" class="size-8 dark:hidden">
           <img src="assets/applications/file-storage-dark.svg" alt="File Storage" class="size-8 hidden dark:block">
         </div>
@@ -49,7 +54,8 @@
     </a>
     <a routerLink="/" mat-menu-item>
       <div class="flex items-center gap-3 my-3">
-        <div class="size-14 border border-neutral-400 dark:border-inverse rounded-lg flex-none flex items-center justify-center">
+        <div
+          class="size-14 border border-neutral-400 dark:border-inverse rounded-lg flex-none flex items-center justify-center">
           <img src="assets/applications/sign.svg" alt="Sign" class="size-8 dark:hidden">
           <img src="assets/applications/sign-dark.svg" alt="Sign" class="size-8 hidden dark:block">
         </div>
@@ -63,7 +69,8 @@
     </a>
     <a routerLink="/" mat-menu-item>
       <div class="flex items-center gap-3 my-3">
-        <div class="size-14 border border-neutral-400 dark:border-inverse rounded-lg flex-none flex items-center justify-center">
+        <div
+          class="size-14 border border-neutral-400 dark:border-inverse rounded-lg flex-none flex items-center justify-center">
           <img src="assets/applications/backup.svg" alt="Backup" class="size-8 dark:hidden">
           <img src="assets/applications/backup-dark.svg" alt="Backup" class="size-8 hidden dark:block">
         </div>
@@ -83,7 +90,8 @@
     </div>
     <a routerLink="/" mat-menu-item>
       <div class="flex items-center gap-3 my-3">
-        <div class="size-14 border border-neutral-400 dark:border-inverse rounded-lg flex-none flex items-center justify-center">
+        <div
+          class="size-14 border border-neutral-400 dark:border-inverse rounded-lg flex-none flex items-center justify-center">
           <img src="assets/applications/passwords.svg" alt="Passwords" class="size-8 dark:hidden">
           <img src="assets/applications/passwords-dark.svg" alt="Passwords" class="size-8 hidden dark:block">
         </div>
@@ -100,7 +108,8 @@
     </div>
     <a routerLink="/" mat-menu-item>
       <div class="flex items-center gap-3 my-3">
-        <div class="size-14 border border-neutral-400 dark:border-inverse rounded-lg flex-none flex items-center justify-center">
+        <div
+          class="size-14 border border-neutral-400 dark:border-inverse rounded-lg flex-none flex items-center justify-center">
           <mat-icon class="font-icon !text-2xl !w-5 !h-8 relative -right-1">arrow_forward</mat-icon>
         </div>
         <div class="-mt-0.5">
@@ -127,7 +136,8 @@
       <div class="flex items-center gap-2">
         Pavel Salauyou
         <div class="border flex items-center border-neutral-900 dark:border-neutral-200 h-5 leading-3 px-2
-                    rounded-full font-bold text-4xs uppercase text-neutral-500 dark:text-neutral-200">Free</div>
+                    rounded-full font-bold text-4xs uppercase text-neutral-500 dark:text-neutral-200">Free
+        </div>
       </div>
       <div class="text-xs text-gray-500 mt-0.5 dark:text-gray-400">pavel.salauyou&#64;mail.com</div>
     </div>
