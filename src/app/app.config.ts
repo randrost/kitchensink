@@ -16,11 +16,21 @@ import {environment} from '@environments/environment';
 import {isPlatformBrowser} from '@angular/common';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {provideMarkdown} from 'ngx-markdown';
+import {provideTranslateService} from '@ngx-translate/core';
+import {provideTranslateHttpLoader} from '@ngx-translate/http-loader';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
+    provideTranslateService({
+      lang: 'en',
+      fallbackLang: 'en',
+      loader: provideTranslateHttpLoader({
+        prefix: 'public/assets/i18n/',
+        suffix: '.json'
+      })
+    }),
     provideRouter(routes, withViewTransitions()),
     provideClientHydration(withEventReplay()),
     ColorSchemeStore,
