@@ -24,7 +24,7 @@
               </emr-sidebar-nav-group-toggle>
               <emr-sidebar-nav-group-menu>
                 @for (childNavItem of navItem.children; track childNavItem) {
-                  <emr-sidebar-nav-item [key]="childNavItem.key" [routerLink]="childNavItem.link">
+                  <emr-sidebar-nav-item [key]="childNavItem.key" (click)="navigate(childNavItem.link)">
                     <ng-container emrSidebarNavItemIcon>
                       @if (childNavItem.icon) {
                         <mat-icon>{{ childNavItem.icon }}</mat-icon>
@@ -40,7 +40,7 @@
             <emr-sidebar-nav-heading>{{ navItem.name }}</emr-sidebar-nav-heading>
           }
           @default {
-            <emr-sidebar-nav-item [key]="navItem.key" [routerLink]="navItem.link">
+            <emr-sidebar-nav-item [key]="navItem.key" (click)="navigate(navItem.link)">
               <ng-container emrSidebarNavItemIcon>
                 @if (navItem.icon) {
                   <mat-icon>{{ navItem.icon }}</mat-icon>

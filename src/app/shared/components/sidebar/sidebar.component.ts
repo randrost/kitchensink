@@ -91,7 +91,7 @@ export class SidebarComponent implements OnInit {
     this._layoutApi.toggleSidebar('root');
   }
 
-  private _activateLink() {
+  private _activateLink(): void {
     const activeLink = this.navItemLinks.find(
       navItem =>
         navItem['link'] === this.location.path() ||
@@ -128,5 +128,15 @@ export class SidebarComponent implements OnInit {
           };
         }
       });
+  }
+
+  navigate(link: string | undefined): void {
+    if (link) {
+      this.router.navigate([link]).then(() => {
+        if (this.isMobile()) {
+          this.toggleSidebar();
+        }
+      });
+    }
   }
 }
