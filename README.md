@@ -1,6 +1,6 @@
 # Kitchensink
 
-DEMO APPLICATION [HERE](https://kitchensink.licendra.com/)
+DEMO APPLICATION [HERE](https://kitchensink.r-tulika.me/)
 
 Kitchensink is a demo application showcasing various Angular features and best practices. It serves as a playground for experimenting with modern Angular concepts and is not intended for production use.
 

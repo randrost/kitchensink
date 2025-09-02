@@ -64,7 +64,6 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     this._breakpointService.currentBreakpoint$.subscribe(breakpoint => {
       this.isMobile.set(breakpoint !== Breakpoint.Desktop);
-      console.log(`Current breakpoint: ${breakpoint}, isMobile: ${this.isMobile()}`);
     })
 
 
