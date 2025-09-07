@@ -117,7 +117,7 @@ export class WidgetGrid implements OnInit {
     this._snackbarService.openSnackBar('Widget removed');
   }
 
-  lol(): void {
+  togglePanel(): void {
     if (this.options.api?.optionsChanged)
     this.options.api.optionsChanged()
   }

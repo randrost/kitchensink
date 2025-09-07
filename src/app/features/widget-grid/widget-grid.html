@@ -39,7 +39,7 @@
       </gridster>
     </emr-panel-body>
   </emr-panel>
-  <emr-side-panel #sidePanel class="my-2" (opened)="lol()" (closed)="lol()">
+  <emr-side-panel #sidePanel class="my-2" (opened)="togglePanel()" (closed)="togglePanel()">
     @if (true) {
       <emr-side-panel-tab tabId="edit" label="Edit Widget" icon="build">
 
