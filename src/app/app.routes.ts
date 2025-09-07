@@ -26,6 +26,22 @@ export const routes: Routes = [
           icon: 'dashboard',
         }
       },
+      {
+        path: 'i18n',
+        loadComponent: () => import('@features/i18n/i18n').then(c => c.I18n),
+        title: 'Internationalization',
+        data: {
+          icon: 'translate',
+        }
+      },
+      {
+        path: 'animation',
+        loadComponent: () => import('@features/animation/animation').then(c => c.Animation),
+        title: 'Animation',
+        data: {
+          icon: 'animation',
+        }
+      }
     ]
   },
   {
