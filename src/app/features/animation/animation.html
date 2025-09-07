@@ -1,0 +1,13 @@
+<markdown>
+  # Animations
+  This section demonstrates some of basic animations
+</markdown>
+
+<button type="button" (click)="toggle()">Toggle Element</button>
+
+
+@if (isShown()) {
+  <div class="enter-container" animate.enter="enter-animation">
+    <p>The box is entering.</p>
+  </div>
+}
