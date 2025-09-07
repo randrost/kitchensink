@@ -33,7 +33,7 @@
     "@angular/platform-browser": "^20.1.0",
     "@angular/platform-server": "^20.1.0",
     "@angular/router": "^20.1.0",
-    "@angular/ssr": "^20.1.6",
+    "@angular/ssr": "^20.2.2",
     "@ctrl/tinycolor": "^4.1.0",
     "@dicebear/collection": "^9.2.2",
     "@dicebear/core": "^9.2.2",
@@ -76,8 +76,8 @@
     "uuid": "^11.0.3"
   },
   "devDependencies": {
-    "@angular/build": "^20.1.6",
-    "@angular/cli": "^20.1.6",
+    "@angular/build": "^20.2.2",
+    "@angular/cli": "^20.2.2",
     "@angular/compiler-cli": "^20.1.0",
     "@angular/localize": "^20.1.0",
     "@elementar-ui/components": "^0.6.0",
